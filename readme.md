@@ -29,7 +29,7 @@ To use the MultiPDF Chat App, follow these steps:
 1. Ensure that you have installed the required dependencies and added the OpenAI API key to the `.env` file.
 2. Run the following command to start the application:
     ```bash
-    ./setup.sh
+    streamlit run app.p
     ```
 3. The application will launch in your default web browser, displaying the user interface.
 4. Load multiple PDF documents into the app by following the provided instructions.
