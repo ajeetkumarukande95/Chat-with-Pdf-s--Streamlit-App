@@ -36,11 +36,18 @@ def main():
         else:
             st.write("Conversation not initialized. Please process PDFs first.")
 
+    # Create a two-column layoout
+    # col1 and col2 in the script represent a two-column layout in the Streamlit app. 
+    # They allocate space for content on the left and right sides, respectively, with col2 being larger (4/5th) than col1 (1/5th). 
+    # This arrangement helps organize the user interface effectively.
     col1, col2 = st.columns([1, 4])
+    
     with col1:
+        # Left column content, empty for now
         pass  
 
     with col2:
+        # Right column content, including the sidebar
         with st.sidebar:
             st.subheader("Your documents")
             pdf_docs = st.file_uploader(
