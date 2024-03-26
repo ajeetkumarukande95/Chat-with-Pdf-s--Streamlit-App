@@ -4,6 +4,10 @@ from templates.html_templates import css, bot_template, user_template
 from helpers import get_pdf_text, get_text_chunks, get_vectorstore, get_conversation_chain
 
 def handle_userinput(user_question):
+    """
+    Handles user input by sending the question to the conversation chain
+    and displaying the responses.
+    """
     response = st.session_state.conversation({'question': user_question})
     st.session_state.chat_history = response['chat_history']
 
@@ -12,7 +16,7 @@ def handle_userinput(user_question):
             st.write(user_template.format(MSG=message.content, USER_SYMBOL="👤"), unsafe_allow_html=True)
         else:
             st.write(bot_template.format(MSG=message.content, BOT_SYMBOL="🤖"), unsafe_allow_html=True)
-     
+
 def main():
     load_dotenv()
     st.set_page_config(page_title="Ask Anything about Provided Document", page_icon=":books:", layout="wide")
@@ -44,17 +48,20 @@ def main():
             if st.button("Process"):
                 with st.spinner("Processing"):
                     # get pdf text
+                    st.write("1. Loading PDFs...")
                     raw_text = get_pdf_text(pdf_docs)
 
                     # get the text chunks
+                    st.write("2. Extracting text chunks...")
                     text_chunks = get_text_chunks(raw_text)
 
                     # create vector store
+                    st.write("3. Creating vector store...")
                     vectorstore = get_vectorstore(text_chunks)
 
                     # create conversation chain
-                    st.session_state.conversation = get_conversation_chain(
-                        vectorstore)
+                    st.write("4. Initializing conversation chain...")
+                    st.session_state.conversation = get_conversation_chain(vectorstore)
 
 if __name__ == '__main__':
     main()
