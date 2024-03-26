@@ -20,7 +20,7 @@ To install and run the MultiPDF Chat App, follow these steps:
    pip install -r requirements.txt
    ```
 3. Obtain an OpenAI API key and add it to the `.env` file in the project directory.
-4. Execute the `main.py` file using the Streamlit CLI:
+4. Execute the `streamlit_app.py` file using the Streamlit CLI:
    ```
    streamlit run streamlit_app.py
    ```
