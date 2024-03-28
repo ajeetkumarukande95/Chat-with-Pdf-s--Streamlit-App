@@ -1,7 +1,7 @@
 import streamlit as st
 from dotenv import load_dotenv
 from templates.html_templates import css, bot_template, user_template
-from helpers import get_pdf_text, get_text_chunks, get_vectorstore, get_conversation_chain
+from summerizer import get_pdf_text, get_text_chunks, get_vectorstore, get_conversation_chain
 
 def handle_userinput(user_question):
     """
